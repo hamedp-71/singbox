@@ -3,46 +3,82 @@
     "level": "warning"
   },
   "dns": {
-    "enable": true,
-    "listen": "0.0.0.0:1053",
-    "ipv6": true,
-    "nameserver": [
-      "8.8.8.8",
-      "2001:4860:4860::8888",
-      "8.8.4.4",
-      "2001:4860:4860::8844",
-      "8.26.56.10",
-      "2001:1608:10:25::1c04:b12f",
-      "208.67.222.222",
-      "2620:119:35::35",
-      "9.9.9.9",
-      "2620:fe::fe",
-      "77.88.8.8",
-      "2a02:6b8::feed:0ff",
-      "185.55.226.26",
-      "2a00:1098:0:80::2",
-      "2a00:1098:2c::1",
-      "10.202.10.202",
-      "10.202.10.102"
+    "servers": [
+      {
+        "address": "8.8.8.8",
+        "strategy": "ipv4_only"
+      },
+      {
+        "address": "2001:4860:4860::8888",
+        "strategy": "ipv6_only"
+      },
+      {
+        "address": "8.8.4.4",
+        "strategy": "ipv4_only"
+      },
+      {
+        "address": "2001:4860:4860::8844",
+        "strategy": "ipv6_only"
+      },
+      {
+        "address": "8.26.56.10",
+        "strategy": "ipv4_only"
+      },
+      {
+        "address": "2001:1608:10:25::1c04:b12f",
+        "strategy": "ipv6_only"
+      },
+      {
+        "address": "208.67.222.222",
+        "strategy": "ipv4_only"
+      },
+      {
+        "address": "2620:119:35::35",
+        "strategy": "ipv6_only"
+      },
+      {
+        "address": "9.9.9.9",
+        "strategy": "ipv4_only"
+      },
+      {
+        "address": "2620:fe::fe",
+        "strategy": "ipv6_only"
+      },
+      {
+        "address": "77.88.8.8",
+        "strategy": "ipv4_only"
+      },
+      {
+        "address": "2a02:6b8::feed:0ff",
+        "strategy": "ipv6_only"
+      },
+      {
+        "address": "185.55.226.26",
+        "strategy": "ipv4_only"
+      },
+      {
+        "address": "2a00:1098:0:80::2",
+        "strategy": "ipv6_only"
+      },
+      {
+        "address": "2a00:1098:2c::1",
+        "strategy": "ipv6_only"
+      },
+      {
+        "address": "10.202.10.202",
+        "strategy": "ipv4_only"
+      },
+      {
+        "address": "10.202.10.102",
+        "strategy": "ipv4_only"
+      }
     ],
-    "proxy_server_nameserver": [
-      "8.8.8.8",
-      "2001:4860:4860::8888",
-      "8.8.4.4",
-      "2001:4860:4860::8844",
-      "8.26.56.10",
-      "2001:1608:10:25::1c04:b12f",
-      "208.67.222.222",
-      "2620:119:35::35",
-      "9.9.9.9",
-      "2620:fe::fe",
-      "77.88.8.8",
-      "2a02:6b8::feed:0ff",
-      "185.55.226.26",
-      "2a00:1098:0:80::2",
-      "2a00:1098:2c::1",
-      "10.202.10.202",
-      "10.202.10.102"
+    "rules": [
+      {
+        "type": "field",
+        "domain": ["geosite:ir"],
+        "server": "direct"
+      }
     ]
   },
   "inbounds": [
@@ -170,44 +206,32 @@
     "rules": [
       {
         "type": "field",
-        "domain": [
-          "geosite:ir"
-        ],
+        "domain": ["geosite:ir"],
         "outbound": "DIRECT"
       },
       {
         "type": "field",
-        "domain": [
-          "geosite:ir-cidr"
-        ],
+        "domain": ["geosite:ir-cidr"],
         "outbound": "DIRECT"
       },
       {
         "type": "field",
-        "domain": [
-          "geosite:malware"
-        ],
+        "domain": ["geosite:malware"],
         "outbound": "REJECT"
       },
       {
         "type": "field",
-        "domain": [
-          "geosite:phishing"
-        ],
+        "domain": ["geosite:phishing"],
         "outbound": "REJECT"
       },
       {
         "type": "field",
-        "domain": [
-          "geosite:cryptominers"
-        ],
+        "domain": ["geosite:cryptominers"],
         "outbound": "REJECT"
       },
       {
         "type": "field",
-        "domain": [
-          "geosite:ads"
-        ],
+        "domain": ["geosite:ads"],
         "outbound": "REJECT"
       },
       {
